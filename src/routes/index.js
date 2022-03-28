@@ -9,7 +9,7 @@ const {
 } = require("../controller/todos");
 router.post("/addTodo", addTodo);
 router.post("/updateTodo/:id", editTodo);
-router.post("/delete/:id", deleteTodo);
+router.delete("/delete/:id", deleteTodo);
 router.get("/todos", getTodos);
 
 module.exports = router;

@@ -59,9 +59,7 @@ exports.deleteTodo = async (request, response) => {
   try {
     let { id } = request.params;
     await todos.destroy({
-      where: {
-        id,
-      },
+      where: { id },
     });
     response.send({
       status: "success",
