@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ActiveTask from "../components/ActiveTask";
+import axios from "axios";
 import {
   View,
   Text,
@@ -9,19 +10,43 @@ import {
 } from "react-native";
 
 const Todos = () => {
-  const [todos, setTodos] = useState("");
+  const [form, setForm] = useState("");
+
+  const addTodo = async () => {
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json",
+        },
+      };
+
+      const body = JSON.stringify({
+        todos: form,
+      });
+
+      await axios.post(
+        "https://app-easyways.herokuapp.com/api/v1/addTodo",
+        body,
+        config
+      );
+
+      setForm("");
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <View style={styles.container}>
       <View>
         <TextInput
-          onChangeText={(value) => setTodos(value)}
-          value={todos}
+          onChangeText={(text) => setForm(text)}
+          value={form}
           style={styles.textInput}
           placeholder="What you want to do ?"
           placeholderTextColor="#f5f5f5"
         />
-        <TouchableOpacity onPress={create} style={styles.ctaAdd}>
+        <TouchableOpacity onPress={addTodo} style={styles.ctaAdd}>
           <Text style={styles.textCta}>Add todo</Text>
         </TouchableOpacity>
 
