@@ -5,7 +5,7 @@ exports.getTodos = async (request, response) => {
     let data = await todos.findAll();
     response.send({
       status: "success",
-      message: data,
+      data,
     });
   } catch (error) {
     console.log(error);
