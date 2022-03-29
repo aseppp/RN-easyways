@@ -8,7 +8,7 @@ const {
   getTodos,
 } = require("../controller/todos");
 router.post("/addTodo", addTodo);
-router.post("/updateTodo/:id", editTodo);
+router.patch("/updateTodo/:id", editTodo);
 router.delete("/delete/:id", deleteTodo);
 router.get("/todos", getTodos);
 
