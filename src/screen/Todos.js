@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
     // marginTop: 10,
     marginHorizontal: 20,
     height: 440,
-    backgroundColor: "gray",
+    // backgroundColor: "gray",
     borderRadius: 3,
   },
   containerComplete: {
